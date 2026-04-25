@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --paper: #f7f4ed;
+  --ink-50: #f4f6f4;
+  --ink-100: #e4e8e3;
+  --ink-200: #ccd3ca;
+  --ink-300: #aeb8ad;
+  --ink-500: #63705f;
+  --ink-600: #4f5c4b;
+  --ink-700: #3d4839;
+  --ink-800: #283124;
+  --ink-950: #10160f;
+  --mint-50: #edfdf4;
+  --mint-100: #d4f8e4;
+  --mint-200: #aeeeca;
+  --mint-700: #04764f;
+  --mint-800: #075f42;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: var(--paper);
+  font-family: 'IBM Plex Sans', system-ui, sans-serif;
+}
+
+@layer utilities {
+  .bg-paper {
+    background-color: var(--paper);
+  }
+
+  .bg-ink-50 {
+    background-color: var(--ink-50);
+  }
+
+  .bg-ink-100 {
+    background-color: var(--ink-100);
+  }
+
+  .bg-mint-100 {
+    background-color: var(--mint-100);
+  }
+
+  .bg-mint-200 {
+    background-color: var(--mint-200);
+  }
+
+  .bg-mint-800 {
+    background-color: var(--mint-800);
+  }
+
+  .text-ink-500 {
+    color: var(--ink-500);
+  }
+
+  .text-ink-600 {
+    color: var(--ink-600);
+  }
+
+  .text-ink-700 {
+    color: var(--ink-700);
+  }
+
+  .text-ink-800 {
+    color: var(--ink-800);
+  }
+
+  .text-ink-900 {
+    color: var(--ink-800);
+  }
+
+  .text-ink-950 {
+    color: var(--ink-950);
+  }
+
+  .text-mint-700 {
+    color: var(--mint-700);
+  }
+
+  .text-mint-800 {
+    color: var(--mint-800);
+  }
+
+  .border-ink-100 {
+    border-color: var(--ink-100);
+  }
+
+  .border-ink-200 {
+    border-color: var(--ink-200);
+  }
+
+  .border-ink-300 {
+    border-color: var(--ink-300);
+  }
+
+  .focus\:border-mint-700:focus {
+    border-color: var(--mint-700);
+  }
+
+  .focus\:ring-mint-100:focus {
+    --tw-ring-color: var(--mint-100);
+  }
+
+  .focus\:ring-mint-200:focus {
+    --tw-ring-color: var(--mint-200);
+  }
+}
+
+@layer components {
+  .panel {
+    border: 1px solid var(--ink-200);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.86);
+    box-shadow: 0 18px 60px rgba(24, 33, 49, 0.08);
+  }
+}
+
