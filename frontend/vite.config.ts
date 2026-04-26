@@ -3,6 +3,7 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
+  base: process.env.NODE_ENV === 'production' ? '/static/frontend/' : '/',
   build: {
     outDir: '../backend/static/frontend',
     emptyOutDir: true,
@@ -11,4 +12,3 @@ export default defineConfig({
     port: 5173,
   },
 });
-
