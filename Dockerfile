@@ -25,5 +25,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY backend/ .
 COPY --from=frontend-build /app/backend/static ./static
 
-CMD ["gunicorn", "config.wsgi:application", "--bind", "0.0.0.0:8000"]
-
+CMD ["/bin/sh", "-lc", "python manage.py migrate && python manage.py collectstatic --noinput && gunicorn config.wsgi:application --bind 0.0.0.0:${PORT:-8000} --workers 1 --timeout 120 --access-logfile - --error-logfile -"]
