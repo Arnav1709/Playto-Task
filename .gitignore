@@ -12,6 +12,7 @@ htmlcov/
 node_modules/
 dist/
 build/
+*.tsbuildinfo
 backend/staticfiles/
 backend/static/frontend/
 .DS_Store
