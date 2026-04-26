@@ -15,4 +15,5 @@ build/
 *.tsbuildinfo
 backend/staticfiles/
 backend/static/frontend/
+backend/celerybeat-schedule
 .DS_Store

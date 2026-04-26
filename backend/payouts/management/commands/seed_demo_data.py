@@ -12,7 +12,11 @@ class Command(BaseCommand):
             {
                 "name": "Acme Studio",
                 "email": "acme@example.com",
-                "credits": [75_000, 50_000, 25_000],
+                "credits": [
+                    ("Invoice AC-1042 paid by Northwind LLC", 75_000),
+                    ("Retainer payment from Blue Harbor Inc", 50_000),
+                    ("Design sprint milestone from Orbit Labs", 25_000),
+                ],
                 "accounts": [
                     ("Riya Shah", "HDFC Bank", "XXXXXX4321", "HDFC0001234"),
                     ("Riya Shah", "ICICI Bank", "XXXXXX1188", "ICIC0002211"),
@@ -21,7 +25,11 @@ class Command(BaseCommand):
             {
                 "name": "Northstar Freelance",
                 "email": "northstar@example.com",
-                "credits": [100_000, 90_000, 60_000],
+                "credits": [
+                    ("Landing page project paid by Atlas Digital", 100_000),
+                    ("Monthly consulting payment from Finch AI", 90_000),
+                    ("Brand audit payment from Maple Works", 60_000),
+                ],
                 "accounts": [
                     ("Kabir Mehta", "Axis Bank", "XXXXXX9090", "UTIB0004455"),
                 ],
@@ -29,7 +37,9 @@ class Command(BaseCommand):
             {
                 "name": "Concurrency Test Merchant",
                 "email": "concurrency@example.com",
-                "credits": [10_000],
+                "credits": [
+                    ("Concurrency test opening balance", 10_000),
+                ],
                 "accounts": [
                     ("Arnav Rao", "State Bank of India", "XXXXXX1000", "SBIN0007788"),
                 ],
@@ -55,12 +65,12 @@ class Command(BaseCommand):
                         },
                     )
 
-                for index, amount_paise in enumerate(merchant_data["credits"], start=1):
+                for description, amount_paise in merchant_data["credits"]:
                     LedgerEntry.objects.create(
                         merchant=merchant,
                         entry_type=LedgerEntry.Type.CREDIT,
                         amount_paise=amount_paise,
-                        description=f"Seeded customer payment #{index}",
+                        description=description,
                     )
 
         self.stdout.write(self.style.SUCCESS("Seeded Playto demo data."))
