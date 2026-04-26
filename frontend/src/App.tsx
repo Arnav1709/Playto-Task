@@ -124,11 +124,13 @@ function StatusBadge({ status }: { status: Payout['status'] }) {
 
 function BalanceTile({
   label,
+  caption,
   amount,
   icon,
   tone,
 }: {
   label: string;
+  caption: string;
   amount: number;
   icon: React.ReactNode;
   tone: string;
@@ -139,7 +141,8 @@ function BalanceTile({
         <span className="text-xs font-semibold uppercase tracking-[0.18em] text-ink-500">{label}</span>
         <span className={`grid h-10 w-10 place-items-center rounded-md ${tone}`}>{icon}</span>
       </div>
-      <p className="mt-7 font-display text-3xl font-semibold text-ink-950">{formatMoney(amount)}</p>
+      <p className="mt-6 font-display text-3xl font-semibold text-ink-950">{formatMoney(amount)}</p>
+      <p className="mt-2 text-sm font-medium text-ink-500">{caption}</p>
     </section>
   );
 }
@@ -227,7 +230,7 @@ export default function App() {
         }),
       });
       setAmount('');
-      setNotice({ type: 'success', message: 'Payout request created and funds moved to hold.' });
+      setNotice({ type: 'success', message: 'Payout request created. That money is now being paid out.' });
       await loadDashboard(selectedMerchantId);
     } catch (error) {
       setNotice({ type: 'error', message: error instanceof Error ? error.message : 'Payout failed.' });
@@ -291,19 +294,22 @@ export default function App() {
 
         <section className="grid gap-4 md:grid-cols-3">
           <BalanceTile
-            label="Available"
+            label="Ready to withdraw"
+            caption="Can be requested right now"
             amount={dashboard?.available_balance_paise ?? 0}
             icon={<Wallet className="h-5 w-5" />}
             tone="bg-mint-100 text-mint-800"
           />
           <BalanceTile
-            label="Held"
+            label="Being paid out"
+            caption="Requested, waiting on bank result"
             amount={dashboard?.held_balance_paise ?? 0}
             icon={<Clock3 className="h-5 w-5" />}
             tone="bg-amber-100 text-amber-800"
           />
           <BalanceTile
-            label="Total"
+            label="Still with Playto"
+            caption="Ready to withdraw + being paid out"
             amount={dashboard?.total_balance_paise ?? 0}
             icon={<Building2 className="h-5 w-5" />}
             tone="bg-ink-100 text-ink-800"
@@ -426,4 +432,3 @@ export default function App() {
     </main>
   );
 }
-

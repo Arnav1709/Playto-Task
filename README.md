@@ -122,7 +122,10 @@ Deployment URL: `TODO`
 
 - Money is always stored as paise in `BigIntegerField`.
 - Balance is derived from ledger rows with database aggregation.
+- Dashboard labels use plain language:
+  - `Ready to withdraw` = available balance.
+  - `Being paid out` = funds locked by pending/processing payouts.
+  - `Still with Playto` = ready to withdraw + being paid out.
 - Payout creation uses `transaction.atomic()` and `select_for_update()` to prevent double spend.
 - Idempotency keys are unique per merchant and store the exact response body and status code.
 - Failed payouts release funds in the same transaction as the failed state transition.
-
